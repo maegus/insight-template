@@ -19,7 +19,6 @@ defmodule Insight.Router do
     get "/", PageController, :index
   end
 
-  Other scopes may use custom stacks.
   scope "/api", Insight do
     pipe_through :api
   end
