@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Insight.Repo
+alias Insight.User
+
+Repo.insert! %User{
+  name: "Draven",
+  email: "i@draveness.me"
+}

@@ -21,5 +21,7 @@ defmodule Insight.Router do
 
   scope "/api", Insight do
     pipe_through :api
+
+    resources "/users", UserController
   end
 end
