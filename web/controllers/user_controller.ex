@@ -32,7 +32,7 @@ defmodule Insight.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Repo.get!(User, id)
-    changeset = User.changeset(user, user_params)
+    changeset = User.update_changeset(user, user_params)
 
     case Repo.update(changeset) do
       {:ok, user} ->
