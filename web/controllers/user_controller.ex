@@ -9,7 +9,8 @@ defmodule Insight.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    changeset = User.changeset(%User{}, user_params)
+    changeset = User.registration_changeset(%User{}, user_params)
+    IO.puts changeset.valid?
 
     case Repo.insert(changeset) do
       {:ok, user} ->

@@ -13,7 +13,10 @@
 alias Insight.Repo
 alias Insight.User
 
+Repo.delete_all User
+
 Repo.insert! %User{
   name: "Draven",
-  email: "i@draveness.me"
+  email: "i@draveness.me",
+  password_hash: "password"
 }
