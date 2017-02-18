@@ -32,7 +32,7 @@ defmodule Insight.UserControllerTest do
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, user_path(conn, :create), user: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(User, %{email: @valid_attrs.email})
+    assert Repo.get_by(User, email: @valid_attrs.email)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
