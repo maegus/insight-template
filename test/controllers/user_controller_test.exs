@@ -2,8 +2,8 @@ defmodule Insight.UserControllerTest do
   use Insight.ConnCase
 
   alias Insight.User
-  @valid_attrs %{avatar: "some content", email: "some content", name: "some content"}
-  @invalid_attrs %{}
+  @valid_attrs %{email: "i@draveness.me", name: "Draven"}
+  @invalid_attrs %{email: "i#draveness.me", name: "T"}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -41,7 +41,7 @@ defmodule Insight.UserControllerTest do
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    user = Repo.insert! %User{}
+    user = Repo.insert! %User{email: "i@draveness.me", name: "Draveness"}
     conn = put conn, user_path(conn, :update, user), user: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(User, @valid_attrs)

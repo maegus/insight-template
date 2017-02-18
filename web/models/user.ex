@@ -36,8 +36,6 @@ defmodule Insight.User do
     |> cast(params, [:name, :avatar, :password])
     |> validate_length(:name, min: 4, max: 16)
     |> validate_length(:password, min: 6, max: 16)
-    |> validate_format(:email, ~r/@/)
-    |> unique_constraint(:email)
     |> put_pass_hash()
   end
 
