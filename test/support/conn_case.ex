@@ -26,6 +26,7 @@ defmodule Insight.ConnCase do
       import Ecto.Query
 
       import Insight.Router.Helpers
+      import Insight.TestHelpers
 
       # The default endpoint for testing
       @endpoint Insight.Endpoint

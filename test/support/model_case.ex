@@ -22,6 +22,7 @@ defmodule Insight.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Insight.ModelCase
+      import Insight.TestHelpers
     end
   end
 
