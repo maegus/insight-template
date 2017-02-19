@@ -23,5 +23,6 @@ defmodule Insight.Router do
     pipe_through :api
 
     resources "/users", UserController
+    resources "/sessions", SessionController, only: [:create]
   end
 end

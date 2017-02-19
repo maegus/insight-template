@@ -8,9 +8,6 @@ defmodule Insight.Session do
     timestamps()
   end
 
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
   def changeset(model, params \\ %{}) do
     model
     |> cast(params, [:user_id])
