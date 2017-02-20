@@ -1,6 +1,7 @@
 defmodule Insight.TestHelpers do
   alias Insight.Repo
   alias Insight.User
+  alias Insight.Session
 
   def insert_user(attrs \\ %{}) do
     changes = Dict.merge(%{

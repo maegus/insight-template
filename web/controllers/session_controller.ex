@@ -19,6 +19,11 @@ defmodule Insight.SessionController do
         conn
         |> put_status(:unauthorized)
         |> render("error.json", user_params)
+      true ->
+        dummy_checkpw
+        conn
+        |> put_status(:unauthorized)
+        |> render("error.json", user_params)
     end
   end
 end

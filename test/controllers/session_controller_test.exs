@@ -1,8 +1,7 @@
 defmodule Insight.SessionControllerTest do
   use Insight.ConnCase
 
-  alias Insight.Session
-  alias Insight.User
+  alias Insight.{Session, Repo}
 
   @valid_attrs %{email: "fizz@buzz.com", password: "password"}
 
@@ -13,7 +12,8 @@ defmodule Insight.SessionControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, session_path(conn, :create), user: @valid_attrs
-    assert token = json_response(conn, 201)["data"]["token"]
+    token = json_response(conn, 201)["data"]["token"]
+    assert token
     assert Repo.get_by(Session, token: token)
   end
 
@@ -23,7 +23,7 @@ defmodule Insight.SessionControllerTest do
   end
 
   test "does not create resource and renders errors when email is invalid", %{conn: conn} do
-    conn = post conn, session_path(conn, :create), user: Map.put(@valid_attrs, :email, "not@found.com")
+    conn = post conn, session_path(conn, :create), user: Map.put(@valid_attrs, :email, "not#found.com")
     assert json_response(conn, 401)["errors"] != %{}
   end
 
