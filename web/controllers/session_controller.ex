@@ -1,8 +1,7 @@
 defmodule Insight.SessionController do
   use Insight.Web, :controller
 
-  alias Insight.Session
-  alias Insight.User
+  alias Insight.{Session, User}
 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
