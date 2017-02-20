@@ -1,7 +1,8 @@
 defmodule Insight.Authentication do
   import Plug.Conn
-  alias Insight.{Repo, User, Session}
   import Ecto.Query, only: [from: 2]
+
+  alias Insight.{Repo, User, Session}
 
   def init(options), do: options
 

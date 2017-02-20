@@ -36,6 +36,8 @@ defmodule Insight.Web do
 
       import Insight.Router.Helpers
       import Insight.Gettext
+
+      import Canary.Plugs
     end
   end
 

@@ -14,4 +14,10 @@ defmodule Insight.TestHelpers do
     |> User.registration_changeset(changes)
     |> Repo.insert!
   end
+
+  def insert_session(user) do
+    %Session{}
+    |> Session.create_changeset(%{user_id: user.id})
+    |> Repo.insert!
+  end
 end
