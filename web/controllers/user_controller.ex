@@ -3,7 +3,8 @@ defmodule Insight.UserController do
 
   alias Insight.User
 
-  plug Insight.Authentication
+  plug Insight.Authentication when action in [:update]
+  plug :load_and_authorize_resource, model: User, only: [:update]
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.registration_changeset(%User{}, user_params)
@@ -27,7 +28,7 @@ defmodule Insight.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Repo.get!(User, id)
+    user = conn.assigns.user
     changeset = User.update_changeset(user, user_params)
 
     case Repo.update(changeset) do
